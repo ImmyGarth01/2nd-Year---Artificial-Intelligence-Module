@@ -35,3 +35,6 @@ General Structure: Draft -
 - All my annotations and questions: This is where I go to aruto and show him my work and questions about the courswork
 ### Questions for arturo ###
 
+
+## 3. Research for Coursework 1 ###
+Look into forums about problems for london taxi drivers 

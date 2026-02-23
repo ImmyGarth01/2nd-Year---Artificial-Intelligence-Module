@@ -11,3 +11,9 @@
 - Probability 
 - Bayed Networks
 - Ethical Questions in AI 
+
+## Exam Requirements ##
+| Assessment   | Weight   | 
+|--------------|----------|
+| Coursework 1 | 50%      |
+| Coursework 2 | 50%      | 

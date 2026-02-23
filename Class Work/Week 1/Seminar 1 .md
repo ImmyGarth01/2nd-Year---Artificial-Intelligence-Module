@@ -14,7 +14,7 @@ As a history buff who doesn't neccessarly have any expertise, I noticed the lack
 I'm currently developing a MVP but im more focusing on early medieval insular manuscripts with Latin text and old irish.
 
 ## Task 2 ##
-## To what extent are the following computer systems instances of artifical intelligence
+### To what extent are the following computer systems instances of artifical intelligence ###
 
 ##### 1. Supermarket Bar Code Scanners - Not AI #####
 
@@ -23,7 +23,8 @@ I'm currently developing a MVP but im more focusing on early medieval insular ma
 ##### 3. Spelling + Grammar Correction in Word - Moderate to High, uses machine learning models and language processing #####
 
 
-### Project Management Tools ###
+
+## Project Management Tools ##
 - Kanban Board
 - Flow Charts
 - Gant Charts 

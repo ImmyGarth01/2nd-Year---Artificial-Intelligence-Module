@@ -1,6 +1,6 @@
 # Lesson 1.2 - Video & Slides #
 
-### Artificial Intelligence ### - The science of making intelligent machines, it should really called computational rationality as there isn't an definition of intelligence 
+### Artificial Intelligence - The science of making intelligent machines, it should really called computational rationality as there isn't an definition of intelligence 
 
 ## Real world Applications ##
 

@@ -13,7 +13,7 @@ Adaptive robots, drones, home cleaning robot, extra set of hands, self driving a
 #### Speech recognition ####
 Siri, Cortana, Google Now 
 
-#### autonomous planning and scheduling ####
+#### Autonomous planning and scheduling ####
 NASA's Remote Agent Programming 
 
 #### Game Playing ####

@@ -15,9 +15,7 @@ The brief talks about the **agent + environment + rationality paradigm**.
 
 ### Agent
 Anything that perceives its environment through sensors and then acts on the environment through actuators.
-
 ### Environment
 Anything outside the agent that can be interacted with.
-
 ### Rationality
 Refers to an agent who, given certain knowledge, can make the best decision to maximise efficiency.

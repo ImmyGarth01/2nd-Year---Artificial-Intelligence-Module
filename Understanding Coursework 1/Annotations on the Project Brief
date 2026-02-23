@@ -7,3 +7,9 @@
 The project is about using a real world example, in this case  adata set for aa rational taxi agent that operates in a "grid" of London 
 
 The brief talks about a *** agent + environment + rationality paradigm*
+
+Agent = Anything that percieves its environment through sensors and then acts withe the environment through actuators 
+
+Environment = Anything outside the agent that can be interacted with 
+
+Rationality = Refers to an agent who given certain knowledge can make the best decision to maximise efficiency

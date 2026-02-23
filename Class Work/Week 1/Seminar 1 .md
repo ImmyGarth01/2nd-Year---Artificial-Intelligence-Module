@@ -16,11 +16,11 @@ I'm currently developing a MVP but im more focusing on early medieval insular ma
 ## Task 2 ##
 ## To what extent are the following computer systems instances of artifical intelligence
 
-### 1. Supermarket Bar Code Scanners - Not AI ###
+##### 1. Supermarket Bar Code Scanners - Not AI #####
 
-### 2. Voice Activated Telephone - Moderate, useds speech recognition but it's limited ###
+##### 2. Voice Activated Telephone - Moderate, useds speech recognition but it's limited #####
 
-### 3. Spelling + Grammar Correction in Word - Moderate to High, uses machine learning models and language processing 
+##### 3. Spelling + Grammar Correction in Word - Moderate to High, uses machine learning models and language processing #####
 
 
 ### Project Management Tools ###

@@ -28,4 +28,28 @@ I'm working with a grid structure representing London
 - The grid must at least be a minimum of 5 x 5
 
 #### The actions ####
-At a min there needs to be movement of North, South, East and West but im going to do: N,NE,E,SE,S,SW,W,NW
+At a min there needs to be movement of North, South, East and West but im going to do: N, NE, E, SE, S, SW, W, NW
+
+#### Performance Metrics ####
+There has to be a performance metric to measure efficiency and it must be defined, In order to tackle this i'm going to have to write out a key of what i want ot include and the point system thtat ensues 
+
+#### Decision-Making Methood ####
+ I need to create a separate file expalining my decision making strategy, why i choose it , when it works well and when it fails
+
+#### Running Scenarios ###
+I need to basicaly.l create 3 user stories and use that as a test to show my working agent it will have: total score, steps taken and whther the goal was achieved. This needs to be reflective of the research document I do 
+
+In order for a stronger report i need to explain in detail why each move was taken at every stage showing its rationility in the process 
+
+There needs to be a focus on limitations too and possible ideas for future development 
+
+#### Code ####
+This is something that I need to code, my coding skills aren't very strong so this will probably be the harderst point, in order to get good at this I just need to do all the labs and apply the search algorithms already provided 
+
+#### Smarter Metrics ####
+This referes to other ways to measure success so maybe I can look at the grid for where there are the least fines, or a carpooling system 
+
+#### Report ####
+I need to frame my problem as an agent i nan environment with objecticve 
+
+- Additional research can include acknowledging environmental costs and accessibility 

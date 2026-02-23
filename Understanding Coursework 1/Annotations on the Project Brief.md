@@ -19,3 +19,13 @@ Anything that perceives its environment through sensors and then acts on the env
 Anything outside the agent that can be interacted with.
 ### Rationality
 Refers to an agent who, given certain knowledge, can make the best decision to maximise efficiency.
+
+
+
+#### The environment ####
+I'm working with a grid structure representing London
+- This means that some cells will be specific locations, some will be blocked to represent traffic and others will be pickup/drop off points
+- The grid must at least be a minimum of 5 x 5
+
+#### The actions ####
+At a min there needs to be movement of North, South, East and West but im going to do: N,NE,E,SE,S,SW,W,NW

@@ -53,3 +53,11 @@ This referes to other ways to measure success so maybe I can look at the grid fo
 I need to frame my problem as an agent i nan environment with objecticve 
 
 - Additional research can include acknowledging environmental costs and accessibility 
+
+---
+
+## 24/02/2026
+
+- Cou
+
+---

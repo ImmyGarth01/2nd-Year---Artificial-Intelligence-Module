@@ -10,3 +10,6 @@
 #### Q7) What is meant by smarter performance metrics? Could this refer to inlcuding metrics that acknowledge general accesibility, environmental protection or the least expensive in terms of tolls? ####
 #### Q8) What is meant by Frame your problem clearly as an agent in an environment with objective? ####
 #### Q9) How many metrics do you suggest to include where it is developed but not overkill? ####
+
+### 24/02/2026 ###
+#### Q10) Does it have to answer an ethical question? Could I make an alogorithm that takes into account avoiding speed cameras? ####

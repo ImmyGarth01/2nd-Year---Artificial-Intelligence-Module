@@ -3,7 +3,7 @@
 - The coursework is expected to be 1,500 words
 - It accounts for 50% of the module grade
 - The original deadline is Thursday 12th March
-- The SOA deadline is 26th May
+- The SOA deadline is 26th March
 
 ---
 

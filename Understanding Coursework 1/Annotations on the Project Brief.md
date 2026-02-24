@@ -60,4 +60,5 @@ I need to frame my problem as an agent i nan environment with objecticve
 
 - Implement 2 agents with different search algorithms 
 - Look into taxis facing fines for speed
+- Talk to a taxi driver about his issues
 ---

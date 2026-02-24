@@ -58,6 +58,6 @@ I need to frame my problem as an agent i nan environment with objecticve
 
 ## 24/02/2026
 
-- Cou
-
+- Implement 2 agents with different search algorithms 
+- Look into taxis facing fines for speed
 ---

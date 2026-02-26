@@ -1,0 +1,136 @@
+#Lab Session 1 
+# Notes about set up
+# Although I downloaded Anaconda I had to separately download Notebook and then when I would open it, it would open itself via Visual Studio Code which I also had to go in and manually change it
+
+ // So the code I set up is just applying hte algorithm given by Arturo and changing it to fit the puzzle grid
+
+ import time
+
+# -----------------------------
+# Heuristic: Manhattan Distance
+# -----------------------------
+def heuristic(board):
+    distance = 0
+    width = 3
+    for i in range(width):
+        for j in range(width):
+            value = board[i][j]
+            if value != 0:
+                goal_x, goal_y = divmod(value - 1, width)
+                distance += abs(goal_x - i) + abs(goal_y - j)
+    return distance
+
+
+# -----------------------------
+# Get Neighbours (Grid Moves)
+# -----------------------------
+def get_neighbors(board):
+    neighbors = []
+    width = 3
+
+    # Find blank (0)
+    for i in range(width):
+        for j in range(width):
+            if board[i][j] == 0:
+                zero = (i, j)
+
+    moves = [(-1,0),(1,0),(0,-1),(0,1)]  # U, D, L, R
+
+    for dx, dy in moves:
+        nx, ny = zero[0] + dx, zero[1] + dy
+        if 0 <= nx < width and 0 <= ny < width:
+            new_board = [row[:] for row in board]
+            new_board[zero[0]][zero[1]], new_board[nx][ny] = \
+                new_board[nx][ny], new_board[zero[0]][zero[1]]
+            neighbors.append((new_board, 1))  # cost = 1
+
+    return neighbors
+
+
+# -----------------------------
+# A* Algorithm (Your Structure)
+# -----------------------------
+def aStarAlgo(start_node, stop_node):
+
+    open_set = {tuple(map(tuple, start_node))}
+    closed_set = set()
+
+    g = {}
+    parents = {}
+
+    start = tuple(map(tuple, start_node))
+    goal = tuple(map(tuple, stop_node))
+
+    g[start] = 0
+    parents[start] = start
+
+    while len(open_set) > 0:
+        n = None
+
+        # Select node with lowest f = g + h
+        for v in open_set:
+            v_board = [list(row) for row in v]
+            if n is None or g[v] + heuristic(v_board) < g[n] + heuristic([list(row) for row in n]):
+                n = v
+
+        if n is None:
+            print("Path does not exist!")
+            return None
+
+        # Goal reached
+        if n == goal:
+            path = []
+            while parents[n] != n:
+                path.append(n)
+                n = parents[n]
+            path.append(start)
+            path.reverse()
+            return path
+
+        # Expand neighbours
+        n_board = [list(row) for row in n]
+
+        for (m_board, weight) in get_neighbors(n_board):
+            m = tuple(map(tuple, m_board))
+
+            if m not in open_set and m not in closed_set:
+                open_set.add(m)
+                parents[m] = n
+                g[m] = g[n] + weight
+            else:
+                if g.get(m, float('inf')) > g[n] + weight:
+                    g[m] = g[n] + weight
+                    parents[m] = n
+                    if m in closed_set:
+                        closed_set.remove(m)
+                        open_set.add(m)
+
+        open_set.remove(n)
+        closed_set.add(n)
+
+    print("Path does not exist!")
+    return None
+
+
+# -----------------------------
+# Example Usage
+# -----------------------------
+start = [[1,2,3],
+         [4,5,0],
+         [6,7,8]]
+
+goal = [[1,2,3],
+        [4,5,6],
+        [7,8,0]]
+
+tic = time.perf_counter()
+path = aStarAlgo(start, goal)
+toc = time.perf_counter()
+
+print("Steps:", len(path) - 1)
+print("Time:", toc - tic)
+
+for state in path:
+    for row in state:
+        print(row)
+    print()

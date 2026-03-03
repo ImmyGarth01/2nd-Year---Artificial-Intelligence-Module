@@ -5,7 +5,7 @@ For my real-world problem I'm thinking of using my search algorithm to avoid spe
 ## 02/03/2026 ##
 Below is an image of the Borough with the hospitals highlighted in red and the cameras in purple. I managed to find the locations via the metropolitan police website where according to the Freedom of Information Act 2000 they have to disclose this information 
 
-(Images/SpeedCameraMap)
+(Images/SpeedCameraMap.jpg)
 
 
 ## 03/03/2026 ##

@@ -19,3 +19,9 @@
 
 [6]“Speed Camera Map,” www.speedcameramap.co.uk. https://www.speedcameramap.co.uk/
 
+
+#### Looking at agent design ####
+
+[7]S. J. Russell and P. Norvig, Artificial Intelligence: a Modern Approach, 4th ed. Upper Saddle River: Pearson, 2020.
+
+[8]aimacode, “GitHub - aimacode/aima-python: Python implementation of algorithms from Russell And Norvig’s ‘Artificial Intelligence - A Modern Approach,’” GitHub, 2025. https://github.com/aimacode/aima-python?tab=readme-ov-file (accessed Mar. 03, 2026).

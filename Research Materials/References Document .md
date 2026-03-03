@@ -12,3 +12,10 @@
 [3]UCL, “Over a third of adults have multiple health problems in midlife,” UCL News, Jul. 27, 2021. https://www.ucl.ac.uk/news/2021/jul/over-third-adults-have-multiple-health-problems-midlife? (accessed Feb. 26, 2026).
 
 [4]World, “Ageing and health,” Who.int, Oct. 2024. https://www.who.int/en/news-room/fact-sheets/detail/ageing-and-health?
+
+#### Finding Speed Cameras ####
+
+[5]“Locations of your speed/ traffic cameras,” Metropolitan Police. https://www.met.police.uk/foi-ai/metropolitan-police/disclosure-2023/july-2023/locations-speed-traffic-cameras/ (accessed Mar. 02, 2026).
+
+[6]“Speed Camera Map,” www.speedcameramap.co.uk. https://www.speedcameramap.co.uk/
+

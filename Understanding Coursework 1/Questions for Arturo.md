@@ -23,3 +23,6 @@ say around 3/4 for top maarks
 ### 24/02/2026 ###
 #### Q10) Does it have to answer an ethical question? Could I make an alogorithm that takes into account avoiding speed cameras? ####
 Yes, this has been signed off as a problem I can tackle 
+
+### 03/03/2026 ###
+#### Q11) When I use a github page do i include each iniviudal page as its own reference even if its on the same repository? ####

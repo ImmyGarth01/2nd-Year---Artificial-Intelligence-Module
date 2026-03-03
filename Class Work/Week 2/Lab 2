@@ -1,1 +1,102 @@
+# Lab 2 Solution
 
+# -----------------------------
+# Step 1: Simulate the world
+# -----------------------------
+# we will create a very simple agent – a vacuum cleaner.
+# Let’s assume that we have a world of 9 locations. There is dirt in the location 1, 2 and 3 and
+# our cleaner is initially at location 1.
+# 1 for dirty, 0 for clean
+# List of 2 items : [World, Cleaner Index]
+
+initial_state = [[1, 1, 1, 0, 0, 0, 0, 0, 0], 0]
+goal_state = [[[0, 0, 0, 0, 0, 0, 0, 0, 0], i] for i in range(0, 9)]
+
+print("Initial state:", initial_state)
+print("Goal states:", goal_state)
+
+# Check if initial state is already a goal
+if initial_state in goal_state:
+    print("True")
+else:
+    print("False")
+
+
+# -----------------------------
+# Step 2: Define agent action
+# -----------------------------
+def action(state):
+    location = state[1]
+    # Action 1: If there is dirt, clean it
+    if state[0][location] == 1:
+        print("Cleaned")
+        return 1
+    # Action 2: If no dirt, move right
+    elif location < 8:
+        print("Move Right")
+        return 2
+    # Action 3: Return to start (move left 8 spaces)
+    elif location == 8:
+        print("Return to Start")
+        return 3
+    else:
+        return "FAILURE"
+
+
+act = action(initial_state)
+
+
+# -----------------------------
+# Step 3: Define the results of actions
+# -----------------------------
+def result(state, action):
+    world = state[0]
+    location = state[1]
+    if action == 1:  # Clean
+        state[0][location] = 0
+    elif action == 2:  # Move right
+        state[1] += 1
+    elif action == 3:  # Move left 8 spaces
+        state[1] -= 8
+    else:
+        print("Nothing was changed")
+    return state
+
+
+# Test result function
+print("Resulting state:", result(initial_state, act))
+
+
+# -----------------------------
+# Step 4: Check if goal state is reached
+# -----------------------------
+def goal_test(current_state, goal_states):
+    if current_state in goal_states:
+        print("Goal state Reached")
+        return True
+    return False
+
+
+print(goal_test(initial_state, goal_state))
+
+
+# -----------------------------
+# Step 5: Make the cleaner work
+# -----------------------------
+def vacuum_cleaner(state, goal_states):
+    current_state = state
+    test = goal_test(current_state, goal_states)
+    while not test:
+        a = action(current_state)
+        r = result(current_state, a)
+        current_state = r
+        print(current_state)
+        test = goal_test(current_state, goal_states)
+    print("Goal Reached. Exit Program")
+
+
+# Example run
+initial_state = [[0, 0, 0, 0, 0, 0, 0, 0, 1], 0]
+goal_state = [[[0, 0, 0, 0, 0, 0, 0, 0, 0], i] for i in range(0, 9)]
+
+vacuum_cleaner(initial_state, goal_state)

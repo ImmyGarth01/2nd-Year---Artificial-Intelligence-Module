@@ -29,3 +29,5 @@ Yes, this has been signed off as a problem I can tackle
 
 ### 06/03/2026 ###
 #### Q12) I'm still a bit confused with the multi-agent element of the course, so do I get points if i create two agents that don't interact with each other but have different search algorithms and then compare them in my report? or do i have like two agents on my grid doing different searches and then summin gup which one was faster with the least steps/ talking about performance metrics
+
+#### Q13) Do I talk about the spefic type and strucure of agent in my report?

@@ -1,0 +1,112 @@
+# Lab Session 3
+# we will create a very simple agent – a vacuu--m cleaner.
+# Step 1: Simulate the world
+# Let’s assume that we have a world of 9 locations. There is dirt in the location 1, 2 and 3 and
+# our cleaner is initially at location 1.
+# 1 for dirty, 0 for clean
+# List of 2 items : [World, Cleaner Index]
+initial_state = [[1, 1, 1, 0, 0, 0, 0, 0, 0], 0]
+
+goal_state = [[[0, 0, 0, 0, 0, 0, 0, 0, 0], i] for i in range(0,9)] 
+
+
+# 2. Define agent action
+# develop a function ‘action’ which takes the current state as input and output the
+#next action. Then, call your function to check what is the next action for initial state.
+
+def action(state):
+    # Figure out where the vacuum is
+    location = state[1]
+    # Action 1: If there is dirt clean it
+    if state[0][location] == 1:
+        act = 1
+        print("Cleaned")
+        return act
+    # Action 2: If there is no dirt, try to move to the right    
+    elif location < 8:
+        act = 2
+        print("Move Right")
+        return act
+    # Action 3: Return to the start (move left 8 spaces)
+    elif location == 8:
+        act = 3
+        print("Return to Start")
+        return act
+    else:
+        return("FAILURE")
+
+# Step 3: Define the results of the actions
+# Develop a function ‘result’ which takes current state and next action as inputs, and
+#outputs the updated state. Use your codes to check the result of action ‘move right’ for
+#initial state
+
+def result(state, action):
+    # make a copy of the current state (Memory)
+    world = state[0]
+    location = state[1]
+    # State Transition
+    if action == 1 :
+        state[0][location] = 0 # The location is now cleaned
+        return state
+    elif action == 2 : #move right
+        state[1] += 1
+        return state
+    elif action == 3 : # move left*8
+        state[1] -= 8
+        return state
+    else:
+        print("Nothing was changed")
+        return state
+
+# 4. Step 4: Check if goal state is reached
+# Develop a function ‘goal_state’ which takes current state and goal state as inputs, and
+# outputs whether the current state is a goal state
+def goal_test(current_state, goal_state):
+    #Check if the current state matches any goal states
+    if current_state in goal_state:
+        print("Goal state Reached")
+        return True
+    return False
+
+# Step 5 : define my path cost function
+def path_cost(cur_cost, action):
+    if action == 1 : # Cleaning
+        new_cost = 5
+        cost = cur_cost + new_cost
+        return cost
+    elif action == 2: # Move right
+        new_cost = 2
+        cost = cur_cost + new_cost
+        return cost
+    elif action == 3 : # Move Left 8 times
+        new_cost = 16
+        cost = cur_cost + new_cost
+        return cost
+    
+# Step 6: Make the cleaner work!
+def vacuum_cleaner(state, goal_state):
+    # Make internal copies of the world
+    current_state = state
+    test = goal_test(current_state, goal_state)
+    cost = 0
+    # Loop my program until floor is clear
+    while test == False:
+        #Percept environment and act on it
+        a = action(current_state)
+        # Function -> Actuator
+        r = result(current_state, a)
+        # Actions
+        current_state = r
+        print(current_state)
+        test = goal_test(current_state, goal_state)
+        # Cost
+        c = path_cost(cost, a) # my cost depends on my current cost and my action
+        cost = c
+    else:
+        print("Goal Reached. Exit Program")
+        print("This costed £", cost)
+        
+        initial_state = [[0, 0, 0, 0, 0, 0, 0, 0, 1 ], 8]
+goal_state = [[[0, 0, 0, 0, 0, 0, 0, 0, 0], i] for i in range(0,9)] 
+
+vacuum_cleaner(initial_state, goal_state)

@@ -11,8 +11,7 @@ Agent = architecture + program
 - So this function is expected to return an action
 - It starts with a percept and an empty table, as the percept sequence increases the table is populated with different actions it can take until there are no more percepts, then the table is looked up adn then an action is returned
 
-##### Pseduo Code: Vacumn cleaner agent 
-
+##### Pseduo Code: Vacumn cleaner agent #####
 if status = Dirty then return Suck
 else if location = A then return Right
 else if location = B then return Left

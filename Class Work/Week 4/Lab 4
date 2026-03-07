@@ -1,0 +1,51 @@
+# Lab 4 Solution - Depth First Search
+
+# Implement Depth First Search
+
+# 1. Represent the graph using a dictionary
+# AKA Adjacency List
+graph = {
+    "5" : ["3","7"],
+    "3" : ["2","4"],
+    "7" : ["8"],
+    "2" : [],
+    "4" : ["8"],
+    "8" : []
+}
+
+# 2. create a set for storing the value of the visited nodes to keep track of 
+# the visited nodes of the graph.
+#  A set is an unordered collection with no duplicate elements [1]
+visted = set()
+
+#3.  design a DFS function with the inputs as visited nodes, the graph 
+# itself and the starting (vertex) node 
+
+def dfs(visited, graph, node):
+    # check whether any node of the graph is visited or not
+    if node not in visited:
+        #print the node and add it to the visited set of nodes
+        print(node)
+        visited.add(node)
+        #go to the neighboring nodes and again call the DFS function to check
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+        
+visited = set()
+dfs(visited, graph, "5")
+
+# Non Recursive DFS
+def dfs_non_recursive(graph, start):
+    visited = set()
+    #Instead of recursion we are going to use queue to track traversal
+    queue = [start]
+
+    while queue:
+        node = queue.pop()#Get the last element that was inserted
+        # Last in First Out LIFO
+        if node not in visited:
+            print(node)
+            visited.add(node)
+            queue.extend(reversed(graph[node]))
+
+    dfs_non_recursive(graph, "5")

@@ -38,3 +38,63 @@ for row in SuttonLondonGrid:
 
 
 
+
+# Step 2 - Defining agent movement 
+# I want to not just use North, South, East, West but also the Diagonals (NE,NW,SE,SW)
+
+def action(state):
+    row, column = state
+
+    
+# Using direct constants - this for fast access 
+
+    North =(-1, 0)
+    South = (1, 0)
+    East = (0, 1)
+    West = (0, -1)
+    North_East = (-1, 1)
+    North_West = (-1, -1)
+    South_East = (1, 1)
+    South_West = (1, -1)
+
+    # Creating a list so I can use a for loop later on 
+    moves = [North, South, East, West, North_East, North_West, South_East, South_West]
+
+# Creating a dictionary - this is for ease of programming for me
+
+Move_Names = {
+    North: "North",
+    South: "South",
+    East: "East",
+    West: "West",
+    North_East: "North-East",
+    North_West: "North-West",
+    South_East: "South-East",
+    South_West: "South-West",
+}
+
+# Action 1: Checking if i'm at the Hospital (End Goal)
+if grid[row][column] == 'H':
+    act = 1 
+    print("You've Reached the Hospital!")
+    return act
+
+# Action 2: If not at Hospital, Looping through the moves to pick the next valid choice 
+elif True:
+    for move in moves:
+        dr, dc = move #Unpacks and adds the tuple value of the coordinate
+        new_row, new_column = row + dr, column + dc # Calculation of coordinates
+
+        # Keeping the agent within the grid conditions 
+    
+        if (0 <= new_row < len(grid) and
+            0 <= new_column < len(grid[0]):
+            act = 2
+            print(f"Move {Move_Names[move]} to ({new_row},{new_column})")
+            return act, (new_row, new_column)
+
+# Action 3: Failure 
+else:
+    act = 3
+    print("FAILURE")
+    return act, (row, column)

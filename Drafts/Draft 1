@@ -42,7 +42,7 @@ for row in SuttonLondonGrid:
 # Step 2 - Defining agent movement 
 # I want to not just use North, South, East, West but also the Diagonals (NE,NW,SE,SW)
 
-def action(state):
+def action(state, grid):
     row, column = state
 
     
@@ -88,7 +88,7 @@ elif True:
         # Keeping the agent within the grid conditions 
     
         if (0 <= new_row < len(grid) and
-            0 <= new_column < len(grid[0]):
+            0 <= new_column < len(grid[0])):
             act = 2
             print(f"Move {Move_Names[move]} to ({new_row},{new_column})")
             return act, (new_row, new_column)

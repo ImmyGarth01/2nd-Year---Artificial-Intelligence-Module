@@ -20,5 +20,5 @@ I then labelled the grid. The H stands for Hospital which is the goal state, the
 
 ### 4. The Grid Itself
 To make the grid more readable I decided to remove the map behind it. We are now left with the structure of the state space 
-
+* In the real thing to help with readability I made my rows ABCDEFGH
 ![LabelledGrid](Images/LabelGrid.jpg)

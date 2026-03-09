@@ -34,3 +34,6 @@ Yes, this has been signed off as a problem I can tackle
 
 ### 07/03/2026 ###
 #### Q14) For top marks did you want me to create some kins of GUI? or graphical design rather than just code?
+
+### 09/03/2026 ###
+#### Q15) Do I need to include somnething like passenger pick up in my code?

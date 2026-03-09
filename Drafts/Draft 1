@@ -98,3 +98,20 @@ else:
     act = 3
     print("FAILURE")
     return act, (row, column)
+
+
+# Step 3: Define the results of the actions
+
+def result(state, action):
+    row, column = state
+
+    #State transition 
+    if act == 1: #If the state is at the Hospital
+        return state
+    elif act == 2: # moving to another square 
+        return new_state
+    elif act == 3: #If there is a failure
+        return state
+     else:
+        print("Nothing was changed")
+        return state

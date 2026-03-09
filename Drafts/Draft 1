@@ -1,1 +1,40 @@
+# First Draft of the Taxi Agent
+
+#Step 1 - Simulate the World
+initial_state = ("B",3)
+goal_state = ("F",4)
+
+rows = "ABCDEFGH"
+# I want my coordinates to be on letter rows for my own readability, so i'm just defining this above
+
+SuttonLondonGrid = [
+    ['-','-','-','-','C','C','-','-'],
+    ['-','-','S','C','-','-','C','-'],
+    ['-','C','-','-','-','C','-','C'],
+    ['-','-','C','C','-','-','-','-'],
+    ['-','-','C','-','-','-','-','-'],
+    ['-','-','-','H','-','-','-','-'],
+    ['-','-','-','-','-','-','-','-'],
+    ['-','-','-','-','-','-','-','-']
+]
+
+     # Just a quick Key 
+     # - = Normal Road Cell
+     # C = Camera Road Cell/Blocked Cell
+     # H = Hospital Cell (Goal state)
+     # S = Starting Cell (Intitial cell)
+
+# I need to make sure to use index so my algorithm understands the rows and converts them
+
+starting_point = (rows.index(initial_state[0]), initial_state[1] - 1)
+Goal_point = (rows.index(goal_state[0]), goal_state[1] - 1)
+
+print(initial_state)
+print(goal_state)
+
+# This is to make sure that the Grid is printed properly 
+for row in SuttonLondonGrid:
+    print(row)
+
+
 

@@ -89,6 +89,7 @@ elif True:
             act = 2
             print(f"Move {Move_Names[move]} to ({new_row},{new_column})")
             return act, (new_row, new_column)
+            
 # # TO ADD ACTION 3 : I need to add an action where my camera is noted/counted 
 # Action 3: If the agent runs into a camera square 
 # Action 4: Failure 

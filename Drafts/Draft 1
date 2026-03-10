@@ -120,3 +120,4 @@ def result(state, action):
 # Step 5: Defining Cost functions 
 # Step 6: Function: A* search 
 # Step 7: Function: BFS 
+# Step 8: Run 2 experiments: run each agent with each search 

@@ -29,9 +29,6 @@ SuttonLondonGrid = [
 starting_point = (rows.index(initial_state[0]), initial_state[1] - 1)
 Goal_point = (rows.index(goal_state[0]), goal_state[1] - 1)
 
-print(initial_state)
-print(goal_state)
-
 # This is to make sure that the Grid is printed properly 
 for row in SuttonLondonGrid:
     print(row)
@@ -92,10 +89,11 @@ elif True:
             act = 2
             print(f"Move {Move_Names[move]} to ({new_row},{new_column})")
             return act, (new_row, new_column)
-
-# Action 3: Failure 
+# # TO ADD ACTION 3 : I need to add an action where my camera is noted/counted 
+# Action 3: If the agent runs into a camera square 
+# Action 4: Failure 
 else:
-    act = 3
+    act = 4
     print("FAILURE")
     return act, (row, column)
 
@@ -110,7 +108,9 @@ def result(state, action):
         return state
     elif act == 2: # moving to another square 
         return new_state
-    elif act == 3: # If there is a failure
+    elif act == 3: # If the agent hits a camera square 
+        return new_state
+    elif act == 4: # If there is a failure
         return state
     else:
         print("Nothing was changed")
@@ -118,9 +118,24 @@ def result(state, action):
 
 # Step 4: Check goal state
 # Step 5: Defining Cost functions 
+        
+def path_cost(cur_cost, action):
+    if action == 1 : # Reaching the Hospital
+        new_cost = 0
+        cost = cur_cost + new_cost
+        return cost
+    elif action == 2: # Moving to a new cell
+        new_cost = 2
+        cost = cur_cost + new_cost
+        return cost
+    elif action == 3 : # Moving into a camera square
+        new_cost = 5
+        cost = cur_cost + new_cost
+        return cost
+    elif action == 4: # 
+        new_cost = 
 # Step 6: Function: A* search 
 # Step 7: Function: BFS 
 # Step 8: Run 2 experiments: run each agent with each search 
 
 # * Cameras are a constraint 
-# Depth for search == Constraints, backtracking 

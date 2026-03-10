@@ -26,14 +26,21 @@ Yes, this has been signed off as a problem I can tackle
 
 ### 03/03/2026 ###
 #### Q11) When I use a github page do i include each iniviudal page as its own reference even if its on the same repository? 
+Just cite the repository 
 
 ### 06/03/2026 ###
 #### Q12) I'm still a bit confused with the multi-agent element of the course, so do I get points if i create two agents that don't interact with each other but have different search algorithms and then compare them in my report? or do i have like two agents on my grid doing different searches and then summin gup which one was faster with the least steps/ talking about performance metrics
+*create the same notebook, create two functions and then two experiments at the end and then compare the cost, thats whats required 
 
-#### Q13) Do I talk about the spefic type and strucure of agent in my report?
+#### Q13) Do I talk about the specfic type and strucure of agent in my report?
+not too much detail, but maybe a flowchart to show how the agent works is enough, focus on framing what I found (i.e my research)
 
 ### 07/03/2026 ###
-#### Q14) For top marks did you want me to create some kins of GUI? or graphical design rather than just code?
+#### Q14) For top marks did you want me to create some kind of GUI? or graphical design rather than just code?
+nope, no point for graphics 
 
 ### 09/03/2026 ###
 #### Q15) Do I need to include somnething like passenger pick up in my code?
+Up to me as I'm solving a real world problem - just say why in the report 
+
+*create the same notebook, create two functions and then two experiments at the end and then compare the cost 

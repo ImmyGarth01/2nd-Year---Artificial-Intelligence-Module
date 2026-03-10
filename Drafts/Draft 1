@@ -48,7 +48,7 @@ def action(state, grid):
     
 # Using direct constants - this for fast access 
 
-    North =(-1, 0)
+    North = (-1, 0)
     South = (1, 0)
     East = (0, 1)
     West = (0, -1)
@@ -110,9 +110,9 @@ def result(state, action):
         return state
     elif act == 2: # moving to another square 
         return new_state
-    elif act == 3: #If there is a failure
+    elif act == 3: # If there is a failure
         return state
-     else:
+    else:
         print("Nothing was changed")
         return state
 
@@ -121,3 +121,5 @@ def result(state, action):
 # Step 6: Function: A* search 
 # Step 7: Function: BFS 
 # Step 8: Run 2 experiments: run each agent with each search 
+
+# * Cameras are a constraint 

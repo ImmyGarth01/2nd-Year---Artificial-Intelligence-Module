@@ -115,3 +115,8 @@ def result(state, action):
      else:
         print("Nothing was changed")
         return state
+
+# Step 4: Check goal state
+# Step 5: Defining Cost functions 
+# Step 6: Function: A* search 
+# Step 7: Function: BFS 

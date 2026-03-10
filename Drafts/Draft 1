@@ -1,5 +1,7 @@
 # First Draft of the Taxi Agent
 
+from collections import deque
+
 #Step 1 - Simulate the World
 initial_state = ("B",3)
 goal_state = ("F",4)
@@ -26,24 +28,45 @@ SuttonLondonGrid = [
 
 # I need to make sure to use index so my algorithm understands the rows and converts them
 
+def format_position(pos): # Making sure that the coordinates go back to letters 
+    r, c = pos
+    return f"({rows[r]},{c+1})"
+    
+def movement_direction(prev, curr):# So my experiement results tell me which way they moved 
+
+    dr = curr[0] - prev[0]
+    dc = curr[1] - prev[1]
+
+    directions = {
+        (-1,0): "North",
+        (1,0): "South",
+        (0,1): "East",
+        (0,-1): "West",
+        (-1,1): "North-East",
+        (-1,-1): "North-West",
+        (1,1): "South-East",
+        (1,-1): "South-West"
+    }
+
+    return directions.get((dr,dc),"Unknown")    
+
+
 starting_point = (rows.index(initial_state[0]), initial_state[1] - 1)
 Goal_point = (rows.index(goal_state[0]), goal_state[1] - 1)
 
 # This is to make sure that the Grid is printed properly 
+print("\n========== SUTTON LONDON GRID ==========\n")
 for row in SuttonLondonGrid:
     print(row)
-
 
 
 
 # Step 2 - Defining agent movement 
 # I want to not just use North, South, East, West but also the Diagonals (NE,NW,SE,SW)
 
-def action(state, grid):
-    row, column = state
+def get_neighbors(state):
 
-    
-# Using direct constants - this for fast access 
+    row, column = state
 
     North = (-1, 0)
     South = (1, 0)
@@ -54,49 +77,32 @@ def action(state, grid):
     South_East = (1, 1)
     South_West = (1, -1)
 
-    # Creating a list so I can use a for loop later on 
     moves = [North, South, East, West, North_East, North_West, South_East, South_West]
 
-# Creating a dictionary - this is for ease of programming for me
+    neighbors = []
 
-Move_Names = {
-    North: "North",
-    South: "South",
-    East: "East",
-    West: "West",
-    North_East: "North-East",
-    North_West: "North-West",
-    South_East: "South-East",
-    South_West: "South-West",
-}
-
-# Action 1: Checking if i'm at the Hospital (End Goal)
-if grid[row][column] == 'H':
-    act = 1 
-    print("You've Reached the Hospital!")
-    return act
-
-# Action 2: If not at Hospital, Looping through the moves to pick the next valid choice 
-elif True:
     for move in moves:
-        dr, dc = move #Unpacks and adds the tuple value of the coordinate
-        new_row, new_column = row + dr, column + dc # Calculation of coordinates
 
-        # Keeping the agent within the grid conditions 
-    
-        if (0 <= new_row < len(grid) and
-            0 <= new_column < len(grid[0])):
-            act = 2
-            print(f"Move {Move_Names[move]} to ({new_row},{new_column})")
-            return act, (new_row, new_column)
-            
-# # TO ADD ACTION 3 : I need to add an action where my camera is noted/counted 
-# Action 3: If the agent runs into a camera square 
-# Action 4: Failure 
-else:
-    act = 4
-    print("FAILURE")
-    return act, (row, column)
+        dr, dc = move
+        new_row, new_column = row + dr, column + dc
+
+        if (0 <= new_row < len(SuttonLondonGrid) and
+            0 <= new_column < len(SuttonLondonGrid[0])):
+
+            cell = SuttonLondonGrid[new_row][new_column]
+
+            if cell == '-':
+                cost = 2
+            elif cell == 'C':
+                cost = 5
+            elif cell == 'H':
+                cost = 0
+            else:
+                cost = 2
+
+            neighbors.append(((new_row,new_column), cost))
+
+    return neighbors
 
 
 # Step 3: Define the results of the actions
@@ -104,39 +110,227 @@ else:
 def result(state, action):
     row, column = state
 
-    #State transition 
-    if act == 1: #If the state is at the Hospital
+    if action == 1:
         return state
-    elif act == 2: # moving to another square 
-        return new_state
-    elif act == 3: # If the agent hits a camera square 
-        return new_state
-    elif act == 4: # If there is a failure
+    elif action == 2:
+        return state
+    elif action == 3:
+        return state
+    elif action == 4:
         return state
     else:
         print("Nothing was changed")
         return state
 
+
 # Step 4: Check goal state
+def goal_test(current_state, goal_state):
+
+    if current_state == goal_state:
+        print("Goal state Reached")
+        return True
+    return False
+
+
 # Step 5: Defining Cost functions 
         
 def path_cost(cur_cost, action):
-    if action == 1 : # Reaching the Hospital
-        new_cost = 0
-        cost = cur_cost + new_cost
-        return cost
-    elif action == 2: # Moving to a new cell
-        new_cost = 2
-        cost = cur_cost + new_cost
-        return cost
-    elif action == 3 : # Moving into a camera square
-        new_cost = 5
-        cost = cur_cost + new_cost
-        return cost
-    elif action == 4: # 
-        new_cost = 
-# Step 6: Function: A* search 
-# Step 7: Function: BFS 
-# Step 8: Run 2 experiments: run each agent with each search 
 
-# * Cameras are a constraint 
+    if action == 1:
+        new_cost = 0
+    elif action == 2:
+        new_cost = 2
+    elif action == 3:
+        new_cost = 5
+    elif action == 4:
+        new_cost = 10
+
+    return cur_cost + new_cost
+
+
+# Step 6: Function: A* search 
+        
+def aStarAlgo(start_node, stop_node):
+
+    open_set = {start_node}
+    closed_set = set()
+
+    g = {}
+    parents = {}
+
+    g[start_node] = 0
+    parents[start_node] = start_node
+
+    while len(open_set) > 0:
+
+        n = None
+
+        for v in open_set:
+            if n is None or g[v] + heuristic(v, stop_node) < g[n] + heuristic(n, stop_node):
+                n = v
+
+        if n is None:
+            print(" That path doesn't exist")
+            return None 
+
+        if n == stop_node:
+
+            path = []
+
+            while parents[n] != n:
+                path.append(n)
+                n = parents[n]
+
+            path.append(start_node)
+            path.reverse()
+
+            return path   # FIXED
+
+
+        for (m, weight) in get_neighbors(n):
+
+            if m not in open_set and m not in closed_set:
+                open_set.add(m)
+                parents[m] = n
+                g[m] = g[n] + weight
+
+            else:
+                if g[m] > g[n] + weight:
+                    g[m] = g[n] + weight
+                    parents[m] = n
+
+                    if m in closed_set:
+                        closed_set.remove(m)
+                        open_set.add(m)
+
+        open_set.remove(n)
+        closed_set.add(n)
+
+    print("Path does not exist")
+    return None 
+
+
+def heuristic(node, goal):
+
+    x1, y1 = node
+    x2, y2 = goal
+
+    return abs(x1 - x2) + abs(y1 - y2)
+
+
+# Step 7: Function: BFS 
+
+def bfs(start_node, goal_node):
+
+    visited = set()
+    queue = deque([start_node])
+
+    parents = {}
+    parents[start_node] = None
+
+    while queue:
+
+        node = queue.popleft()
+
+        if node not in visited:
+
+            visited.add(node)
+
+            if node == goal_node:
+
+                path = []
+
+                while node is not None:
+                    path.append(node)
+                    node = parents[node]
+
+                path.reverse()
+
+                return path   # FIXED
+
+
+            for (neighbor, cost) in get_neighbors(node):
+
+                if neighbor not in visited:
+
+                    queue.append(neighbor)
+
+                    if neighbor not in parents:
+                        parents[neighbor] = node
+
+    print("Path does not exist!")
+    return None
+
+
+
+# Step 8: Run 2 experiments
+
+def run_experiment(start, goal):
+
+    bfs_path = bfs(start, goal)
+    astar_path = aStarAlgo(start, goal)
+
+    print("\nBFS MOVES")
+    print("Step        Position        Movement")
+    print("---------------------------------------")
+
+    for i in range(len(bfs_path)):
+        
+        if i == 0:
+            move = "Start"
+        else:
+            move = movement_direction(bfs_path[i-1], bfs_path[i])
+
+        print(f"{i+1}           {format_position(bfs_path[i])}        {move}")
+
+
+    print("\nA* MOVES")
+    print("Step        Position        Movement")
+    print("---------------------------------------")
+
+    for i in range(len(astar_path)):
+        
+        if i == 0:
+            move = "Start"
+        else:
+            move = movement_direction(astar_path[i-1], astar_path[i])
+
+        print(f"{i+1}           {format_position(astar_path[i])}        {move}")
+
+
+    bfs_length = len(bfs_path)
+    astar_length = len(astar_path)
+
+    bfs_cost = 0
+    bfs_cameras = 0
+
+    for r,c in bfs_path:
+        if SuttonLondonGrid[r][c] == 'C':
+            bfs_cost += 5
+            bfs_cameras += 1
+        elif SuttonLondonGrid[r][c] == '-':
+            bfs_cost += 2
+
+    astar_cost = 0
+    astar_cameras = 0
+
+    for r,c in astar_path:
+        if SuttonLondonGrid[r][c] == 'C':
+            astar_cost += 5
+            astar_cameras += 1
+        elif SuttonLondonGrid[r][c] == '-':
+            astar_cost += 2
+
+
+    print("\n========== EXPERIMENT RESULTS ==========")
+
+    print("Algorithm        Path Length    Cost    Cameras Crossed")
+    print("--------------------------------------------------------")
+
+    print(f"BFS              {bfs_length}            {bfs_cost}        {bfs_cameras}")
+    print(f"A*               {astar_length}            {astar_cost}        {astar_cameras}")
+
+    print("========================================")
+
+
+run_experiment(starting_point, Goal_point)

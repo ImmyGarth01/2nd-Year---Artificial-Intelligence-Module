@@ -123,3 +123,4 @@ def result(state, action):
 # Step 8: Run 2 experiments: run each agent with each search 
 
 # * Cameras are a constraint 
+# Depth for search == Constraints, backtracking 

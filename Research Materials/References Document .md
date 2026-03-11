@@ -30,3 +30,6 @@
 #### Moore's Neighbour 
 [9]D. Das, “A Survey on Cellular Automata and Its Applications,” Communications in computer and information science, pp. 753–762, Jan. 2012, doi: https://doi.org/10.1007/978-3-642-29219-4_84.
 ‌
+#### How much cameras genetrate:
+[10] Evening Standard, “Speed cameras raise £65m a year,” Evening Standard, London, U.K. [Online]. Available: https://www.standard.co.uk/news/uk/speed-cameras-raise-ps65m-a-year-6489976.html
+. [Accessed: Mar. 11, 2026].

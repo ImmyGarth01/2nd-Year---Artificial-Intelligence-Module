@@ -25,3 +25,8 @@
 [7]S. J. Russell and P. Norvig, Artificial Intelligence: a Modern Approach, 4th ed. Upper Saddle River: Pearson, 2020.
 
 [8]aimacode, “GitHub - aimacode/aima-python: Python implementation of algorithms from Russell And Norvig’s ‘Artificial Intelligence - A Modern Approach,’” GitHub, 2025. https://github.com/aimacode/aima-python?tab=readme-ov-file (accessed Mar. 03, 2026).
+
+
+#### Moore's Neighbour 
+[9]D. Das, “A Survey on Cellular Automata and Its Applications,” Communications in computer and information science, pp. 753–762, Jan. 2012, doi: https://doi.org/10.1007/978-3-642-29219-4_84.
+‌

@@ -4,4 +4,4 @@
 #### Q1) Do I still include the search algorithm experiment in my coursework 2 or do I just choose 1? ####
 
 ### 20/04/3036
-#### Q2) Do i use the same layout for report?
+#### Q2) Do i use the same layout for report?( Introduction, Background, Methodology, Results, Discussion, Conclusion, References, Appendix)

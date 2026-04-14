@@ -1,0 +1,161 @@
+# =========================
+# 1. KNOWLEDGE BASE
+# =========================
+
+# We define uncertain variables (RANDOM VARIABLES)
+
+# Example:
+# Rain ∈ {True, False}
+# Cloudy ∈ {True, False}
+
+KB = {
+    "facts": {
+        "cloudy": True
+    },
+    
+    # RULES (deterministic reasoning)
+    # These are simple logical relationships
+    "rules": [
+        ("cloudy", "rain"),
+        ("rain", "umbrella")
+    ],
+    
+    # PROBABILITIES
+    # These represent uncertainty
+
+    # Example of CONDITIONAL PROBABILITY:
+    # P(rain | cloudy) = 0.7
+    # "Probability of rain GIVEN cloudy"
+    
+    "probabilities": {
+        ("rain", "cloudy"): 0.7,
+        ("rain", "not_cloudy"): 0.2
+    }
+}
+
+# =========================
+# 2. INTERPRET USER INPUT
+# =========================
+
+def interpret(question):
+    question = question.lower()
+    
+    # This is a simple mapping from language → intent
+    # (students can improve this later)
+    
+    if "rain" in question:
+        return "rain_query"
+    elif "umbrella" in question:
+        return "umbrella_query"
+    elif "why" in question:
+        return "explanation_query"
+    else:
+        return "unknown"
+
+# =========================
+# 3. RULE-BASED INFERENCE
+# =========================
+
+def forward_chain(KB):
+    inferred = set()
+    
+    # PRODUCT RULE IDEA (informal):
+    # We are chaining conditions:
+    # if cloudy → rain → umbrella
+    
+    for condition, result in KB["rules"]:
+        if KB["facts"].get(condition, False):
+            inferred.add(result)
+    
+    return inferred
+
+# =========================
+# 4. PROBABILITY FUNCTIONS
+# =========================
+
+def probability_rain(KB):
+    
+    # CONDITIONAL PROBABILITY:
+    # P(rain | cloudy)
+    
+    if KB["facts"]["cloudy"]:
+        return KB["probabilities"][("rain", "cloudy")]
+    else:
+        return KB["probabilities"][("rain", "not_cloudy")]
+
+# =========================
+# 5. BAYES RULE (OPTIONAL ADVANCED)
+# =========================
+
+def bayes(p_e_given_h, p_h, p_e_given_not_h):
+    
+    # BAYES RULE:
+    # P(H | E) = P(E | H) * P(H) / P(E)
+    
+    # where:
+    # H = hypothesis (e.g., rain)
+    # E = evidence (e.g., clouds)
+    
+    p_e = p_e_given_h * p_h + p_e_given_not_h * (1 - p_h)
+    
+    return (p_e_given_h * p_h) / p_e
+
+# =========================
+# 6. DECISION + EXPLANATION
+# =========================
+
+def answer_query(intent, KB):
+    
+    inferred = forward_chain(KB)
+    rain_prob = probability_rain(KB)
+    
+    # KEY IDEA:
+    # Rules → give structure
+    # Probability → gives confidence
+    
+    if intent == "rain_query":
+        
+        # Using probability instead of just rules
+        
+        if rain_prob > 0.5:
+            explanation = f"Because it is cloudy, P(rain|cloudy) = {rain_prob}"
+            return "It is likely to rain.", explanation
+        else:
+            return "Rain is unlikely.", "Low probability."
+    
+    elif intent == "umbrella_query":
+        
+        # Combining RULES + PROBABILITY
+        
+        if "umbrella" in inferred or rain_prob > 0.5:
+            explanation = f"Rain probability is {rain_prob}, so taking an umbrella reduces risk."
+            return "Yes, take an umbrella.", explanation
+        else:
+            return "No need for an umbrella.", "Low risk of rain."
+    
+    else:
+        return "I don't understand.", "No matching reasoning."
+
+# =========================
+# 7. AGENT LOOP
+# =========================
+
+def run_agent():
+    
+    print("Ask me about weather decisions (type 'exit' to stop)")
+    
+    while True:
+        question = input("You: ")
+        
+        if question.lower() == "exit":
+            break
+        
+        intent = interpret(question)
+        answer, explanation = answer_query(intent, KB)
+        
+        print("Agent:", answer)
+        print("Explanation:", explanation)
+        print("-" * 40)
+
+# run agent
+run_agent()
